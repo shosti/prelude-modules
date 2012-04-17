@@ -6,6 +6,7 @@
 ;; URL: http://www.batsov.com/emacs-prelude
 ;; Version: 1.0.0
 ;; Keywords: convenience
+;; Package-Requires: ((rainbow-mode "0.2"))
 
 ;; This file is not part of GNU Emacs.
 

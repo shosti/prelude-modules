@@ -33,37 +33,38 @@
 
 ;;; Code:
 
-(require 'prelude-lisp)
+;;;###autoload
+(progn
+  (require 'prelude-lisp)
 
-(defun prelude-remove-elc-on-save ()
-  "If you're saving an elisp file, likely the .elc is no longer valid."
-  (make-local-variable 'after-save-hook)
-  (add-hook 'after-save-hook
-            (lambda ()
-              (if (file-exists-p (concat buffer-file-name "c"))
-                  (delete-file (concat buffer-file-name "c"))))))
+  (defun prelude-remove-elc-on-save ()
+    "If you're saving an elisp file, likely the .elc is no longer valid."
+    (make-local-variable 'after-save-hook)
+    (add-hook 'after-save-hook
+              (lambda ()
+                (if (file-exists-p (concat buffer-file-name "c"))
+                    (delete-file (concat buffer-file-name "c"))))))
 
-(defun prelude-emacs-lisp-mode-defaults ()
-  (run-hooks 'prelude-lisp-coding-hook)
-  (turn-on-eldoc-mode)
-  (prelude-remove-elc-on-save)
-  (rainbow-mode +1))
+  (defun prelude-emacs-lisp-mode-defaults ()
+    (run-hooks 'prelude-lisp-coding-hook)
+    (turn-on-eldoc-mode)
+    (prelude-remove-elc-on-save)
+    (rainbow-mode +1))
 
-(setq prelude-emacs-lisp-mode-hook 'prelude-emacs-lisp-mode-defaults)
+  (setq prelude-emacs-lisp-mode-hook 'prelude-emacs-lisp-mode-defaults)
 
-(add-hook 'emacs-lisp-mode-hook (lambda () (run-hooks 'prelude-emacs-lisp-mode-hook)))
+  (add-hook 'emacs-lisp-mode-hook (lambda () (run-hooks 'prelude-emacs-lisp-mode-hook)))
 
-;; ielm is an interactive Emacs Lisp shell
-(defun prelude-ielm-mode-defaults ()
-  (run-hooks 'prelude-interactive-lisp-coding-hook)
-  (turn-on-eldoc-mode))
+  ;; ielm is an interactive Emacs Lisp shell
+  (defun prelude-ielm-mode-defaults ()
+    (run-hooks 'prelude-interactive-lisp-coding-hook)
+    (turn-on-eldoc-mode))
 
-(setq prelude-ielm-mode-hook 'prelude-ielm-mode-defaults)
+  (setq prelude-ielm-mode-hook 'prelude-ielm-mode-defaults)
 
-(add-hook 'ielm-mode-hook (lambda () (run-hooks 'prelude-ielm-mode-hook)))
+  (add-hook 'ielm-mode-hook (lambda () (run-hooks 'prelude-ielm-mode-hook)))
 
-(define-key emacs-lisp-mode-map (kbd "M-.") 'find-function-at-point)
-
+  (define-key emacs-lisp-mode-map (kbd "M-.") 'find-function-at-point))
 (provide 'prelude-emacs-lisp)
 
 ;;; prelude-emacs-lisp.el ends here

@@ -6,6 +6,7 @@
 ;; URL: http://batsov.com/emacs-prelude
 ;; Version: 1.0.0
 ;; Keywords: convenience
+;; Package-Requires: ((haskell-mode "2.8.0") (prelude-programming "1.0.0"))
 
 ;; This file is not part of GNU Emacs.
 
@@ -32,6 +33,7 @@
 
 ;;; Code:
 
+;;;###autoload
 (eval-after-load 'haskell-mode
   '(progn
      (defun prelude-haskell-mode-defaults ()

@@ -6,6 +6,7 @@
 ;; URL: http://batsov.com/emacs-prelude
 ;; Version: 1.0.0
 ;; Keywords: convenience
+;; Package-Requires: ((mediawiki "2.2.3"))
 
 ;; This file is not part of GNU Emacs.
 
@@ -32,6 +33,7 @@
 
 ;;; Code:
 
+;;;###autoload
 (eval-after-load 'mediawiki
   '(progn
      (setq mediawiki-site-alist '(("Wikipedia" "http://en.wikipedia.org/w" "" "" "Main Page")

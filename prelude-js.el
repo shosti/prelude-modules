@@ -6,6 +6,7 @@
 ;; URL: http://batsov.com/emacs-prelude
 ;; Version: 1.0.0
 ;; Keywords: convenience
+;; Package-Requires: ((prelude-programming "1.0.0"))
 
 ;; This file is not part of GNU Emacs.
 
@@ -32,6 +33,7 @@
 
 ;;; Code:
 
+;;;###autoload
 (eval-after-load 'js-mode
   '(progn
      (defun prelude-js-mode-defaults ()
