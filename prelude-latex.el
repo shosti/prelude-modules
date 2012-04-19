@@ -6,6 +6,7 @@
 ;; URL: http://batsov.com/emacs-prelude
 ;; Version: 1.0.0
 ;; Keywords: convenience
+;; Package-Requires: ((auctex "11.86"))
 
 ;; This file is not part of GNU Emacs.
 
@@ -32,33 +33,37 @@
 
 ;;; Code:
 
-;; AUCTeX configuration
-(setq TeX-auto-save t)
-(setq TeX-parse-self t)
+;;;###autoload
+(progn
+ ;; AUCTeX configuration
+ (setq TeX-auto-save t)
+ (setq TeX-parse-self t)
 
-(setq-default TeX-master nil)
+ (setq-default TeX-master nil)
 
-;; use pdflatex
-(setq TeX-PDF-mode t)
+ ;; use pdflatex
+ (setq TeX-PDF-mode t)
 
-(setq TeX-view-program-selection
-      '((output-dvi "DVI Viewer")
-        (output-pdf "PDF Viewer")
-        (output-html "HTML Viewer")))
-;; this section is good for OS X only
-;; TODO add sensible defaults for Linux/Windows
-(setq TeX-view-program-list
-      '(("DVI Viewer" "open %o")
-        ("PDF Viewer" "open %o")
-        ("HTML Viewer" "open %o")))
+ (setq TeX-view-program-selection
+       '((output-dvi "DVI Viewer")
+         (output-pdf "PDF Viewer")
+         (output-html "HTML Viewer")))
+ 
+ ;; this section is good for OS X only
+ ;; TODO add sensible defaults for Linux/Windows
+ (setq TeX-view-program-list
+       '(("DVI Viewer" "open %o")
+         ("PDF Viewer" "open %o")
+         ("HTML Viewer" "open %o")))
 
-(defun prelude-latex-mode-defaults ()
-  (turn-on-auto-fill)
-  (abbrev-mode +1))
+ (defun prelude-latex-mode-defaults ()
+   (turn-on-auto-fill)
+   (abbrev-mode +1))
 
-(setq prelude-latex-mode-hook 'prelude-latex-mode-defaults)
+ (setq prelude-latex-mode-hook 'prelude-latex-mode-defaults)
 
-(add-hook 'LaTeX-mode-hook (lambda () (run-hooks 'prelude-latex-mode-hook)))
+ (add-hook 'LaTeX-mode-hook (lambda ()
+                              (run-hooks 'prelude-latex-mode-hook))))
 
 (provide 'prelude-latex)
 

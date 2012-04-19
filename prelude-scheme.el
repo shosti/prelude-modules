@@ -6,6 +6,7 @@
 ;; URL: http://batsov.com/emacs-prelude
 ;; Version: 1.0.0
 ;; Keywords: convenience
+;; Package-Requires: ((prelude-lisp "1.0.0"))
 
 ;; This file is not part of GNU Emacs.
 
@@ -32,6 +33,7 @@
 
 ;;; Code:
 
+;;;###autoload
 (add-hook 'scheme-mode-hook (lambda () (run-hooks 'prelude-lisp-coding-hook)))
 
 (provide 'prelude-scheme)
