@@ -48,13 +48,12 @@
 
   (eval-after-load 'ruby-mode
     '(progn
-       (require 'ruby-end)
-       
        (defun prelude-ruby-mode-defaults ()
          (inf-ruby-setup-keybindings)
          ;; turn off the annoying input echo in irb
          (setq comint-process-echoes t)
          (ruby-block-mode t)
+         (ruby-end-mode +1)
          ;; bind yari in the local keymap
          (local-set-key (kbd "C-h r") 'yari))
 
