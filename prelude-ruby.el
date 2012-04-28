@@ -35,6 +35,7 @@
 
 ;;;###autoload
 (progn
+  (require 'ruby-block)
   ;; Rake files are ruby, too, as are gemspecs, rackup files, and gemfiles.
   (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))
