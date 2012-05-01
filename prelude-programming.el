@@ -83,7 +83,8 @@
             (add-to-list 'name-and-pos (cons name position))))))))
 
   ;; add a shortcut for prelude-ido-goto-symbol
-  (define-key prelude-mode-map (kbd "C-c i") 'prelude-ido-goto-symbol)
+  (eval-after-load 'prelude-mode
+    (define-key prelude-mode-map (kbd "C-c i") 'prelude-ido-goto-symbol))
 
   (defun prelude-local-comment-auto-fill ()
     (set (make-local-variable 'comment-auto-fill-only-comments) t)
